@@ -1,0 +1,17 @@
+{% extends 'base.html.j2' %}
+
+{% block title %}
+Edit Your Review
+{% endblock %}
+
+{% block content %}
+<form method="PUT" action="{{url_for('main.edit_review', review_id = review_id)}}">
+    <div class = 'mb-3'>
+        <br><br>
+        <textarea class = 'form-control' placeholder = 'New Title' name="review_title" style = "height:20px;">{{title}}</textarea><br>
+        <textarea class = 'form-control' placeholder = 'Update your review' name="review_body" style = "height:100px;">{{body}}</textarea>
+    </div>
+        <button type = 'submit' class = 'btn btn-warning'><i class="fas fa-paper-plane"></i>&nbsp;Submit</button>
+    </div>
+
+{% endblock %}

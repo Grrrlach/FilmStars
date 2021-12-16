@@ -1,0 +1,66 @@
+{% extends 'base.html.j2' %}
+
+    {% block css %}
+        <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
+    {% endblock %}
+
+    {% block content %}
+    <small style = "color:white">
+        {% if current_user.is_authenticated %}
+            <div class = "white">Edit Profile</div>
+        {% else %}
+            <div class = "white" style= "margin-left:13px;">Register Below</div>
+        {% endif %}
+    </small>
+    <br>
+    <div class = "white">
+
+        <div class="form-group">
+            <div class="white">
+                <small style = "color:red">{{error}}</small>
+                <form action = "{{url_for ('auth.edit_profile') if current_user.is_authenticated else url_for ('auth.register')}}" method="POST">
+                {{ form.hidden_tag() }}
+
+                {# username section #}
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control", value=current_user.username) }}
+
+                {# first name #}
+                {{form.first_name.label(class="form-label")}}
+                {{form.first_name(class="form-control", value=current_user.first_name)}}
+
+                {# last name #}
+                {{form.last_name.label(class="form-label")}}
+                {{form.last_name(class="form-control", value=current_user.last_name)}}
+
+                {# email #}
+                {{form.email.label(class="form-label")}}
+                {{form.email(class="form-control", value=current_user.email)}}
+
+                {# email errors #}
+                {% for error in form.email.errors %}
+                    <small style="color:red;"> {{error}}</small><br>
+                {%endfor %}
+
+                {# #password #}
+                {{form.password.label(class="form-label")}}
+                {{form.password(class="form-control")}}
+
+                {# #confirm password #}
+                {{form.confirm_password.label(class="form-label")}}
+                {{form.confirm_password(class="form-control")}}
+
+                {# password error #}
+                {% for error in form.password.errors %}
+                    <small style="color:red;">{{error}}</small><br>
+                    {# Is this what I need to do for confirm password #}
+                {% endfor %}
+                <br>
+            </div>
+                {# submit button #}
+                {{form.submit(class='btn, btn-primary')}}
+                </form>
+        </div>
+        </div>
+    </form>
+{% endblock %}

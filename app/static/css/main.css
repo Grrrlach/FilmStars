@@ -1,0 +1,31 @@
+body{
+    background-size: 100% auto;
+    background-color: black;
+    background: url("/static/images/hollywood2.jpg") no-repeat 0px 0px;
+    background-size: cover;
+}
+div.form-group {
+    margin: auto;
+    width: 90%;
+  }
+
+div.form-title {
+margin: auto;
+width: 90%;
+}
+
+div.padded{
+  margin: auto;
+  width: 90%;
+  margin-top: 15px;
+}
+
+div.my-card{
+  margin: auto;
+  width: 50%;
+  margin-top: 10px;
+}
+
+div.white{
+    color: white;
+}

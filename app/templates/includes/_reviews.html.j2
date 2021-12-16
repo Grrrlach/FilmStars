@@ -1,0 +1,23 @@
+<div class="card" style="width: 50%; margin: auto;">
+    {# <div style="width: 15%;" #}
+    {# <div style="width: 15%;" id=left> #}
+    <div class = "row">
+        <div class="col-3">
+            {%if review.poster_url != None%}
+            <img src="{{review.poster_url}}" class="card-img-top" alt="...">
+            {%else%}
+            <img src = "app\static\images\image_not_found.jpg">
+            {%endif%}
+        </div>
+        <div class="col-9" style = "text-align: center; vertical-align: middle; line-height: 50px; color:black;">
+            <h5 class="card-title">{{'"'}}{{review.movie_name}}{{'",  '}}{{review.movie_year}}<br>{{ "You said: " if self.user_id==current_user.id else "Another user said: " }} {{review.review_title}}</h5>
+
+            {% if current_user.user_id == review.user_id %}
+            <small><a href="{{url_for('main.edit_review', review_id=review.review_id)}}"><h6>Edit Review</a></h6></small>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card-body">
+        <p class="card-text" style="color:black">{{review.review_body}}</p>
+    </div>
+</div>

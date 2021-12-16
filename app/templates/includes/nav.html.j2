@@ -1,0 +1,62 @@
+    <h1>
+            <nav class="navbar navbar-expand-lg navbar-dark ">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav" style="color:white">
+
+                            {# INDEX PAGE #}
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}"><h4>FilmStars</h4></a>
+                                </li>
+                            {# END INDEX PAGE #}
+
+                            {% if current_user.is_authenticated %}
+                                <li class = "nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{url_for('main.my_reviews')}}"><h4>&nbsp| My Reviews</h4></a>
+                                </li>
+
+                                <li class = "nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{url_for('main.write_review')}}"><h4>&nbsp| Write a Review</h4></a>
+                                </li>
+
+                                <li class = "nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{url_for('main.random_movie_gen')}}"><h4>&nbsp| Random Movie!</h4></a>
+                                </li>
+                                {# <li class = "nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{url_for('main.movie_')}}">&nbsp| Write a Review</a>
+                                </li>                        #}
+                            {% endif %}
+
+
+                            {#REGISTER OR EDIT PROFILE#}
+                            {% if not current_user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{url_for('auth.register')}}"><h4>| Register</h4></a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{url_for('auth.edit_profile')}}"><h4>| Edit Profile</h4></a>
+                                </li>
+                            {% endif %}
+                            {# END REGISTER OR EDIT PROFILE #}
+
+                            {# LOGIN AND LOGOUT #}
+                            {% if not current_user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{url_for('auth.login')}}"><h4>| Login</h4></a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{url_for('auth.logout')}}"><h4>| Logout</h4></a>
+                                </li>
+                            {% endif %}
+                            {# END LOGIN AND LOGOUT #}
+
+
+                            </ul>
+                        </div>
+                </div>
+            </nav>

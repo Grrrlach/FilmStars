@@ -1,0 +1,22 @@
+{% extends 'base.html.j2' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+{% endblock %}
+
+{% block title %}
+Your reviews
+{% endblock %}
+
+{% block content %}
+                {# show user reviews #}
+                {% for review in all_reviews %}
+                    {% include './includes/_reviews.html.j2' %}<br><br>
+                {% endfor %}
+
+            </div>
+        </form>
+    </div>
+
+
+    {% endblock %}

@@ -1,0 +1,37 @@
+<div class = "my-card">
+    <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+        {# <img src="{{ post.author.get_icon_url() }}" class="img-fluid rounded-start" alt="avatar"> #}
+        {# make that the movie art cover #}
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+            <h5 class="card-title">{{review.author.username}} {{review.author.username}} said:</h5>
+            {% if view_all %}
+            <p class="card-text"><br>{{review.body}}</p>
+            {% else %}
+            <p class="card-text"><br>{{review.body | truncate (100)}}</p>
+            {% endif %}
+            <small><small><small>
+                <small><a href="{{url_for('main.see_review', id=review.id)}}">View Review</a></small>
+
+                {% if current_user.id == review.author.id %}
+                <small><a href="{{url_for('main.edit_review', id = post.id)}}">Edit Review</a></small>
+                {% endif %}
+
+                <p class="card-text"><small class="text-muted">{{moment(review.date_created).fromNow()}}
+                    <span style="color: lightgreen"><br>{{"edited "+ moment(review.date_updated).fromNow() | string () if review.date_updated else ""}}</span>
+                </small></p>
+
+                {# Clickable image to imdb url for movie
+                <a href !!!!! {{movie link from imdb api}}  !!!!!!!!!>
+                    <img src="{{!!!!!api from imdb of movie cover !!!!!!}}" alt=click here to see the IMDB entry for this movie>
+                </a> #}
+
+            </small></small></small>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
