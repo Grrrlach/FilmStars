@@ -33,7 +33,6 @@ class User(UserMixin, db.Model):
 
     def from_dict(self, data):
         self.username = data['username']
-        self.user_id = data['user_id']
         self.first_name = data['first_name']
         self.last_name = data['last_name']
         self.email = data['email']

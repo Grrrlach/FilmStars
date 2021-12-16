@@ -1,0 +1,48 @@
+{% extends 'base.html.j2' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/search.css')}}">
+{% endblock %}
+
+{% block content %}
+
+{% if movie_dict %}
+
+    <small style = "color:white">
+    
+
+        {{movie_dict.movie_name}}<br>
+        {{movie_dict.movie_year}}
+        <br>
+        <div class = "col-4">
+            <img src="{{movie_dict.poster_url}}" class="img-fluid" alt="poster">
+        </div>
+        <div class = "col-8"><h6>
+            {{movie_dict.movie_desc}}
+        </h6></div>
+{% endif %}
+        <br>
+        <div class = "white" style= "margin-left:13px;">Search for a Movie</div>
+    </small>
+<br>
+<div class = "white">
+        <div class="form-group">
+            <div class="white">
+                <small style = "color:red">{{error}}</small>
+                <form action = "{{url_for ('main.search') }}" method="POST">
+                {# movie name #}
+                {{ form.movie_name.label(class="form-label") }}
+                {{ form.movie_name(class="form-control") }}
+
+                {# movie year #}
+                {{form.movie_year.label(class="form-label")}}
+                {{form.movie_year(class="form-control")}}
+            </div>
+                {# submit button #}
+                <br>
+                <button type = 'submit' class = 'btn btn-warning'><i class="fas fa-paper-plane"></i>&nbsp;Submit</button>
+                </form>
+        </div>
+</div>
+{% endblock %}
+

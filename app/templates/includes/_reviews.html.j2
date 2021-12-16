@@ -14,10 +14,11 @@
 
             {% if current_user.user_id == review.user_id %}
             <small><a href="{{url_for('main.edit_review', review_id=review.review_id)}}"><h6>Edit Review</a></h6></small>
+            <small><a href="{{url_for('main.delete_review', review_id=review.review_id)}}"><h6>Delete Review</a></h6></small>
             {% endif %}
         </div>
     </div>
     <div class="card-body">
-        <p class="card-text" style="color:black">{{review.review_body}}</p>
+        <p class="card-text" style="color:black; font-size:.5em">{{review.review_body}}</p>
     </div>
 </div>

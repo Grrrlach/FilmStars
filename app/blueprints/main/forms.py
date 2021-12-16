@@ -7,8 +7,8 @@ from wtforms.widgets.core import TextArea
 from app.models import User
 
 class SearchForm(FlaskForm):
-    title = StringField('Search for a Movie', validators = [DataRequired()])
-    year = StringField('Release Year (not required)')
+    movie_name = StringField('What is your movie called?', validators = [DataRequired()])
+    movie_year = StringField('What year was it released? (YYYY)  (Not required, but helpful.)')
     submit = SubmitField('Submit')
 
 class ReviewForm1(FlaskForm):

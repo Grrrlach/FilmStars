@@ -85,18 +85,20 @@ def edit_profile():
             "email":form.email.data.lower(),
             "password":form.password.data,
         }
-    user=User.query.filter_by(email=form.email.data.lower()).first()
-    if user and current_user.email != user.email:
-        flash("Email already in use", "danger")
-        return redirect(url_for('auth.edit_profile'))
+        user=User.query.filter_by(email=form.email.data.lower()).first()
+
+        if user and current_user.email != user.email:
+            flash("Email already in use", "danger")
+            return render_template('register.html.j2', form=form)
         try:
             current_user.from_dict(new_user_data)
             current_user.save()
             flash("Pofile Updated", "success")
+            return render_template('index.html.j2')
         except:
             flash("Something went wrong. Please try later.", "danger")
-            return redirect(url_for('auth.edit_profile'))
-    return render_template('auth.edit_profile')
+            return render_template('register.html.j2', form=form)
+    return render_template('register.html.j2', form=form)
 
 
     # user.username = form.username.data.lower()
